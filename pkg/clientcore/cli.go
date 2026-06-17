@@ -50,6 +50,7 @@ func RunCLI() {
 	flag.BoolVar(&cfg.ManualCaptcha, "manual-captcha", false, "skip auto captcha solving, use manual mode immediately")
 	flag.StringVar(&cfg.CaptchaSolver, "captcha-solver", "v2", "auto captcha solver implementation: v1|v2")
 	flag.StringVar(&cfg.CaptchaHost, "captcha-host", "", "manual captcha host:port to expose in addition to localhost:8765")
+	flag.BoolVar(&cfg.NoBrowser, "no-browser", false, "do not automatically open browser for manual captcha")
 	flag.Parse()
 
 	if *genWrapKey {

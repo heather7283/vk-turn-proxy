@@ -25,6 +25,7 @@ import (
 const captchaListenPort = "8765"
 
 var customCaptchaHost string
+var captchaNoBrowser bool
 
 type browserCommand struct {
 	name string
@@ -586,8 +587,10 @@ func runCaptchaServerAndWait(handler http.Handler, captchaURL string, keyCh <-ch
 	fmt.Println("==============================================")
 	fmt.Println()
 
-	log.Printf("[%s] Opening browser...", logPrefix)
-	openBrowser(captchaURL)
+	if (!captchaNoBrowser) {
+		log.Printf("[%s] Opening browser...", logPrefix)
+		openBrowser(captchaURL)
+	}
 
 	key := <-keyCh
 

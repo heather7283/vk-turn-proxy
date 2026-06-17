@@ -2177,6 +2177,7 @@ type Config struct {
 	ManualCaptcha  bool   `json:"manual_captcha,omitempty"`
 	CaptchaSolver  string `json:"captcha_solver,omitempty"`
 	CaptchaHost    string `json:"captcha_host,omitempty"`
+	NoBrowser      bool   `json:"no_browser,omitempty"`
 }
 
 func (cfg *Config) setDefaults() {
@@ -2233,6 +2234,8 @@ func Run(ctx context.Context, cfg Config) error {
 		return captchaHostErr
 	}
 	autoCaptchaSliderPOC = !manualCaptcha
+
+	captchaNoBrowser = cfg.NoBrowser
 
 	var link string
 	var getCreds getCredsFunc
